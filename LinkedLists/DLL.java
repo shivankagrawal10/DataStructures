@@ -14,6 +14,15 @@
 			list.setprev(temp);}
 			list= temp;
 		}
+		
+		public void convert2CDLL() {
+			doubleNode temp = list;
+			while (temp.next!=null) {
+				temp = temp.next;
+			}
+			list.prev = temp;
+			temp.next=list;
+		}
 		public void recurprint (){ prin(list);}
 		public void prin(doubleNode list){
 			if (list==null){
