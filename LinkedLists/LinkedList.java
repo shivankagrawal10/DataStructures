@@ -18,9 +18,17 @@ public class LinkedList<Type>{
 	public void addtofront(Type data){
 		list = new Node (data, list);
 	}
-	public void add (Type newdata, Node where){
-		Node nadd = new Node(newdata, where.next);
-		where.next = nadd;
+	public void addpos (Type newdata, Node where){
+		where.next = new Node(newdata, where.next);
+	}
+	public void add (Type where, Type newdata){
+	{
+		Node temp = list;
+		while(temp!=null){
+			if (temp.data==where){break;}
+			temp=temp.next;
+		}
+		temp.next = new Node (newdata,temp.next);
 	}
 	public void remove (Node wnext){
 		Node old = wnext.next;
