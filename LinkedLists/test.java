@@ -3,12 +3,16 @@
 public class test{
 
 	public static void main(String[] args) {
-		//LinkedList <Integer> temp = new LinkedList<Integer>();
-		DLL <Integer> temp = new DLL<Integer>();		
+		LinkedList <Integer> temp = new LinkedList<Integer>();
+		//DLL <Integer> temp = new DLL<Integer>();		
 		for (int i=1;i<=10;i++){
-		temp.addtofront(i);
+			temp.addtofront(i);
 		}
-		temp.recurprint();
+		temp.add(9,8);
+		temp.printlist();
+		temp.removeall(8);
+		temp.printlist();
+
 		/*
 		System.out.println(temp.size());
 		LinkedList <Integer> temp1 = temp.copy();
@@ -20,7 +24,8 @@ public class test{
 		//temp.recurprint();
 		*/
 	}
-
+}
+	/*
 	public static IntNode addtofront(int data, IntNode oldfront){
 		return new IntNode (data, oldfront);
 	}
@@ -65,3 +70,4 @@ public class test{
 		recurprint(first.next);
 	}
 }
+*/

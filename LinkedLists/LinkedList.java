@@ -22,7 +22,6 @@ public class LinkedList<Type>{
 		where.next = new Node(newdata, where.next);
 	}
 	public void add (Type where, Type newdata){
-	{
 		Node temp = list;
 		while(temp!=null){
 			if (temp.data==where){break;}
@@ -30,9 +29,50 @@ public class LinkedList<Type>{
 		}
 		temp.next = new Node (newdata,temp.next);
 	}
-	public void remove (Node wnext){
+	public void removepos (Node wnext){
 		Node old = wnext.next;
 		wnext.next = old.next;
+	}
+	public void remove (Type where){
+		Node temp = list, prev = null;
+		if (temp==null){
+			return;
+		}
+		while(temp!=null){
+			if(temp.data ==where){
+				break;
+			}
+			prev=temp;
+			temp=temp.next;
+		}
+		if(prev==null){ //handles front of list
+			list=temp.next;
+		}
+		else{
+			prev.next=temp.next;
+		}
+	}
+	public void removeall (Type where){
+		Node temp = list, prev = null;
+		if (temp==null){
+			return;
+		}
+		while(temp!=null){
+			if(temp.data ==where){
+				if(prev==null){ //handles front of list
+					list=temp.next;
+				}
+				else{
+					prev.next=temp.next;
+				}
+				temp=temp.next;
+			}
+			else{
+				prev=temp;
+				temp=temp.next;
+			}
+		}
+		
 	}
 	public int size(){ return sizehelp(list);} //Using helper class so that user interface is simple 
 	public int sizehelp(Node list){
