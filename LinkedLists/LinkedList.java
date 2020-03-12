@@ -2,6 +2,7 @@
 public class LinkedList<Type>{
 	private Node list=null;
 	private Node temppointer=list;
+	
 	//	temp = new Node(2,temp); // next pointer refers to the next node in line
 	//	temp = new Node(1,temp); // Node with next pointer = null is last element
 	public LinkedList(){
@@ -27,7 +28,8 @@ public class LinkedList<Type>{
 			if (temp.data==where){break;}
 			temp=temp.next;
 		}
-		temp.next = new Node (newdata,temp.next);
+		if(temp!=null){
+		temp.next = new Node (newdata,temp.next);}
 	}
 	public void removepos (Node wnext){
 		Node old = wnext.next;
@@ -73,6 +75,50 @@ public class LinkedList<Type>{
 			}
 		}
 		
+	}
+	public  void merge(Node frontL2) {
+         helpmerge(list,frontL2);
+      }
+	private Node helpmerge(Node<Integer> frontL1, Node<Integer> frontL2) {
+    	//Node l3;
+    	System.out.println (frontL1+" "+frontL2);
+    	if (frontL1==null && frontL2==null){return frontL1;}
+    	if (frontL1==null && frontL2!=null){
+    		helpmerge(frontL1,frontL2.next);
+    		return frontL2;
+    	}
+    	
+    	if (frontL2==null && frontL1!=null){
+    		helpmerge(frontL1.next,frontL2);
+    		return frontL1;
+    	}
+    	if(((frontL1.data).compareTo(frontL2.data))>0){
+    		//Node temp = frontL1.next;
+    		frontL1.next = helpmerge(frontL1.next,frontL2);
+    		return frontL1;
+    	}
+    	else if(((frontL1.data).compareTo(frontL2.data))<0){ //(frontL1).data > (frontL2).data
+    		//Node temp = frontL2.next;
+    		frontL2.next = helpmerge(frontL1,frontL2.next);
+    		return frontL2;
+    	}
+    	else  {
+    		helpmerge(frontL1.next,frontL2.next);
+    		return frontL2;
+    	}
+    }
+	public void recremoveall (Type target){
+		list = recremall(list, target); 
+	}
+	private Node recremall (Node curr, Type target ){
+		if (curr==null){return curr;}
+		if(curr.data.equals(target)){
+			
+			return recremall(curr.next,target); //skips the node with the target
+		}
+		curr.next = recremall(curr.next,target); //links current node to the one next to it
+		return curr; //returns the next node for the previous during recursive call
+		//even handles if the first node is the target because will return the curr.next if curr is first
 	}
 	public int size(){ return sizehelp(list);} //Using helper class so that user interface is simple 
 	public int sizehelp(Node list){

@@ -5,12 +5,20 @@ public class test{
 	public static void main(String[] args) {
 		LinkedList <Integer> temp = new LinkedList<Integer>();
 		//DLL <Integer> temp = new DLL<Integer>();		
-		for (int i=1;i<=10;i++){
+		for (int i=0;i<=10;i+=2){
 			temp.addtofront(i);
 		}
-		temp.add(9,8);
+		LinkedList <Integer> temp1 = new LinkedList<Integer>();
+		//DLL <Integer> temp = new DLL<Integer>();		
+		for (int i=1;i<=10;i+=2){
+			temp1.addtofront(i);
+		}
+		//temp.add(9,8);
 		temp.printlist();
-		temp.removeall(8);
+		temp1.printlist();
+		//temp.removeall(8);
+		//temp.recremoveall(10);
+		temp.merge(temp1.first());
 		temp.printlist();
 
 		/*
